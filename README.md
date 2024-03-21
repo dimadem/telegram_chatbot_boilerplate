@@ -161,3 +161,7 @@ docker pull username/projectname:v1
 ```
 sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=YOURTOKEN -e OPENAI_API_KEY=YOURTOKEN username/projectname:v1
 ```
+
+# ТЕЛЕГРАМ
+
+- Заходим в телеграм на своего Бота и работаем =)
