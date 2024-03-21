@@ -143,3 +143,23 @@ sudo docker run hello-world
 ```
 
 ---
+
+# Запуск образа 
+
+- находим образ опубликованный в DockerHub
+
+  ```
+  docker search username/projectname
+  ```
+
+- скачиваем найденный образ
+
+```
+docker pull username/projectname:v1
+```
+
+- запускаем контейнер вместе с ключами от TelegramBot & OpenAI API
+
+```
+sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=YOURTOKEN -e OPENAI_API_KEY=YOURTOKEN username/projectname:v1
+```
