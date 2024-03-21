@@ -2,6 +2,18 @@
 
 # установка проекта
 
+- открываем Makefile и вводим свои данные.
+- Перед использованием Docker нужно залогиниться в Docker через cli -  `docker login`
+  
+  ```
+  # данные пользователя на Docker Hub
+  USERNAME=UserNameDockerHub
+  REPO=RepositoryNameDockerHub
+  TAG=v1
+  TELEGRAM_BOT_TOKEN=1235
+  OPENAI_API_KEY=1234
+  ```
+
 - устанавливаем зависимости и создаем .env файл
 
 ```
@@ -21,6 +33,19 @@ make run
 ```
 make clean
 ```
+
+- сборка образа для Linux Debian
+
+```
+make build
+```
+
+- публикация образа в DockerHub
+
+```
+make push
+```
+
 
 ---
 
