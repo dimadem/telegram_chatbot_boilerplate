@@ -1,3 +1,7 @@
+# ТОКЕН ТЕЛЕГРАММ БОТА
+
+`@BotFather` -> `/newbot` -> `name project` -> `name_bot` -> copy token to access the HTTP API :)
+
 # Команды
 
 # установка проекта
@@ -161,6 +165,8 @@ docker pull username/projectname:v1
 ```
 sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=YOURTOKEN -e OPENAI_API_KEY=YOURTOKEN username/projectname:v1
 ```
+
+---
 
 # ТЕЛЕГРАМ
 
