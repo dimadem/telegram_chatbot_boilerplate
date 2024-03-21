@@ -1,10 +1,26 @@
 # Команды
 
-### activate .venv
-source .venv/bin/activate
+# установка проекта
 
-### deactivate .venv
-deactivate
+- устанавливаем зависимости и создаем .env файл
+
+```
+make setup
+```
+
+- Вставляем токены бота Telegram & API key OpenAi в .env
+
+- Запускаем проект
+
+```
+make run
+```
+
+- удаляем .venv / .env / cache/ etc.
+
+```
+make clean
+```
 
 ---
 
