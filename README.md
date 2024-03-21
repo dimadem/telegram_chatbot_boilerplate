@@ -29,12 +29,6 @@ make clean
 ```
 telegram_chatbot_boilerplate/
 │
-├── .venv/
-│   ├── bin/
-│   ├── include/
-│   ├── lib/
-│   └── pyvenv.cfg
-│
 ├── config/
 │   ├─── openai_client.py
 │   ├─── telegram_bot.py
@@ -49,12 +43,10 @@ telegram_chatbot_boilerplate/
 │   ├── __init__.py
 │   └── helpers.py
 │
-├── bot.py
+├── app.py
 ├── requirements.txt
 └── README.md
 ```
-
-- `.venv/` - виртуальное окружение
 
 - `config/` - конфигурационные файлы
 
