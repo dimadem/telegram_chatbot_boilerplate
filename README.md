@@ -20,8 +20,6 @@
 make setup
 ```
 
-- Вставляем токены бота Telegram & API key OpenAi в .env
-
 - Запускаем проект
 
 ```
