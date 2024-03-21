@@ -1,12 +1,12 @@
-Команды
+# Команды
 
-# activate .venv
-
+### activate .venv
 source .venv/bin/activate
 
-# deactivate .venv
-
+### deactivate .venv
 deactivate
+
+---
 
 # Структура проекта
 
@@ -72,7 +72,7 @@ telegram_chatbot_boilerplate/
 
 ---
 
-## [(установка Docker)[https://docs.docker.com/engine/install/debian/]]
+## [установка Docker](https://docs.docker.com/engine/install/debian/)
 
 - обновление системы и настройка apt репозитория Docker
 
