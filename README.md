@@ -1,4 +1,4 @@
-# ТОКЕН ТЕЛЕГРАММ БОТА
+# Токен Телеграм бота
 
 `@BotFather` -> `/newbot` -> `name project` -> `name_bot` -> copy token to access the HTTP API :)
 
