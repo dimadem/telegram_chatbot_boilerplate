@@ -44,8 +44,9 @@ telegram_chatbot_boilerplate/
 │   └── helpers.py
 │
 ├── app.py
-├── requirements.txt
-└── README.md
+├── Dockerfile
+├── Makefile
+└── requirements.txt
 ```
 
 - `config/` - конфигурационные файлы
@@ -62,6 +63,10 @@ telegram_chatbot_boilerplate/
 - `utils/` - вспомогательные функции
 
 - `app.py` - главный файл приложения
+
+- `Dockerfile` - скрипт для создания Docker образа
+ 
+- `Makefile` - автоматизация процесса сборки
 
 - `requirements.txt` - зависимости проекта
 
