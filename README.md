@@ -45,7 +45,7 @@ telegram_chatbot_boilerplate/
 
 Для локальной установки проекта потребуется:
 - подключение к VPN серверу для доступа к API OpenAI
-- токен телеграмм бота
+- токен Telegram бота
 - токен API OpenAI
 - операционная система Linux или MacOS
 
@@ -77,8 +77,14 @@ telegram_chatbot_boilerplate/
    ```
    make run
    ```
-2. Открываем телеграм бота и отправляем сообщение
-   > Сообщения в телеграм боте и в терминале дублируются.
+   
+2. Открываем Telegram бота и отправляем сообщение
+   > Сообщения в Telegram боте и в терминале дублируются.
+
+3. Для удаления .venv, .env, cache и других временных файлов:
+   ```
+   make clean
+   ```
 
 ---
 
@@ -87,7 +93,7 @@ telegram_chatbot_boilerplate/
 Для деплоя контейнера на облачный сервер потребуется:
 - Скаченная программа [Docker](https://www.docker.com/products/docker-desktop/)
 - Аккаунт в [DockerHub](https://hub.docker.com/)
-- токен телеграмм бота
+- токен Telegram бота
 - токен API OpenAI
 - операционная система Linux или MacOS
 
@@ -166,10 +172,6 @@ telegram_chatbot_boilerplate/
    sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=YOURTOKEN -e OPENAI_API_KEY=YOURTOKEN username/projectname:v1
    ```
    
-4. Открываем телеграм бота и отправляем сообщение
-   > Сообщения в телеграм боте и в терминале дублируются.
+4. Открываем Telegram бота и отправляем сообщение
+   > Сообщения в Telegram боте и в терминале дублируются.
    
-
-## Телеграм
-
-Зайдите в Telegram к своему боту и начинайте работу!
