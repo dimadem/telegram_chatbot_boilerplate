@@ -129,7 +129,7 @@ telegram_chatbot_boilerplate/
 
 ---
 
-## Установка Docker
+## [Установка Docker](https://docs.docker.com/engine/install/debian/)
 
 1. Обновляем систему и настраиваем репозиторий для Docker:
    ```
@@ -145,7 +145,7 @@ telegram_chatbot_boilerplate/
    sudo apt-get update  
    ```
 
-2. [Установика Docker](https://docs.docker.com/engine/install/debian/):
+2. Установка Docker:
    ```
    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
    ```
