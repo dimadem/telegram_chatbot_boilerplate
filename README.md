@@ -100,7 +100,7 @@ telegram_chatbot_boilerplate/
    TELEGRAM_BOT_TOKEN=1235
    OPENAI_API_KEY=1234
    ```
-   Для публикации образа в [DockerHub](https://hub.docker.com/) нужно залогиниться через CLI командой `docker login`
+   > Для публикации образа в [DockerHub](https://hub.docker.com/) нужно залогиниться через CLI командой `docker login`
 
 1. Собираем образ под Linux Debian:
    ```
@@ -120,7 +120,7 @@ telegram_chatbot_boilerplate/
 2. Для доступа к API OpenAI разверните сервер в Нидерландах
 3. Выберите Debian 12 
 4. Когда сервер загрузится и сгенерируется root-пароль, подключитесь к серверу по SSH
-5. 
+
 ---
 
 ## Установка Docker
