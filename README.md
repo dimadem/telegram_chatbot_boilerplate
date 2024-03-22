@@ -97,7 +97,7 @@ telegram_chatbot_boilerplate/
 - токен API OpenAI
 - операционная система Linux или MacOS
 
-1. В `Makefile` добавьте к уже имеющимся токенам, **username**  и **repositoryname**:
+1. В `Makefile` добавим к уже имеющимся токенам, **username** и **repositoryname**:
    ```
    # данные пользователя на Docker Hub
    USERNAME=UserNameDockerHub
