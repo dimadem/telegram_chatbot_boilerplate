@@ -4,7 +4,7 @@
 
 Библиотеки:
   - [openai](https://pypi.org/project/openai/)
-  - [python-telegram-bot](https://python-telegram-bot.org/)
+  - [python-telegram-bot](https://pypi.org/project/python-telegram-bot/)
 
 ## Структура проекта
 
