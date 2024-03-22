@@ -1,57 +1,12 @@
-# Токен Телеграм бота
+# Предисловие
 
-`@BotFather` -> `/newbot` -> `name project` -> `name_bot` -> copy token to access the HTTP API :)
+Туториал поможет развернуть чат-бота Telegram, использующего API OpenAI, как локально, так и в Docker контейнере на сервере Debian. 
 
-# Команды
+Библиотеки:
+  - [openai](https://pypi.org/project/openai/)
+  - [python-telegram-bot](https://python-telegram-bot.org/)
 
-# установка проекта
-
-- открываем Makefile и вводим свои данные.
-> для публикации образа в DockerHub нужно залогиниться через cli -  `docker login`
-  
-  ```
-  # данные пользователя на Docker Hub
-  USERNAME=UserNameDockerHub
-  REPO=RepositoryNameDockerHub
-  TAG=v1
-  TELEGRAM_BOT_TOKEN=1235
-  OPENAI_API_KEY=1234
-  ```
-
-- устанавливаем зависимости и создаем .env файл
-
-```
-make setup
-```
-
-- Запускаем проект
-
-```
-make run
-```
-
-- удаляем .venv / .env / cache/ etc.
-
-```
-make clean
-```
-
-- сборка образа для Linux Debian
-
-```
-make build
-```
-
-- публикация образа в DockerHub
-
-```
-make push
-```
-
-
----
-
-# Структура проекта
+## Структура проекта
 
 ```
 telegram_chatbot_boilerplate/
@@ -61,13 +16,13 @@ telegram_chatbot_boilerplate/
 │   ├─── telegram_bot.py
 │   └─── tokens.py
 │
-├── handlers/
+├── handlers/  
 │   ├── __init__.py
 │   ├── command_handlers.py
 │   └── message_handlers.py
 │
 ├── utils/
-│   ├── __init__.py
+│   ├── __init__.py 
 │   └── helpers.py
 │
 ├── app.py
@@ -77,97 +32,144 @@ telegram_chatbot_boilerplate/
 ```
 
 - `config/` - конфигурационные файлы
-
-  - `openai_client.py` - настройки доступа к сервису OpenAI
-  - `telegram_bot.py` - настройки создания экземпляра бота Telegram
-  - `tokens.py` - токены
-
-- `handlers/` - обработчики сообщений и команд
-
-  - `command_handlers.py` - модуль с обработчиками команд (`/start`, `/help`, `/clear`, ...)
-  - `message_handlers.py` - модуль с обработчиками текстовых сообщений
-
+- `handlers/` - обработчики сообщений и команд 
 - `utils/` - вспомогательные функции
-
 - `app.py` - главный файл приложения
-
 - `Dockerfile` - скрипт для создания Docker образа
- 
-- `Makefile` - автоматизация процесса сборки
-
+- `Makefile` - автоматизация процесса сборки 
 - `requirements.txt` - зависимости проекта
 
-# разворачивание в сети
+---
 
-## сервер на Debian
+# Часть 1: Локальная установка
 
-- Можно воспользоваться любым облачным сервисом, в этом примере мы воспользуемся https://timeweb.cloud/
-- Для доступа к API OpenAI, разворачиваем облачный сервер в Нидерландах.
+Для локальной установки проекта потребуется:
+- подключение к VPN серверу для доступа к API OpenAI
+- токен телеграмм бота
+- токен API OpenAI
+- операционная система Linux или MacOS
 
-- Выбираем Debian 12
+## Токен Телеграм бота
 
-- Когда сервер загрузился и сгенерировался root-пароль, можно подключаться к серверу
+Для начала нужно получить токен для доступа к HTTP API вашего бота:
 
-- Используем ssh подключение и root пароль для доступа к cli сервера
+1. Найдите в Telegram бота `@BotFather`
+2. Отправьте ему команду `/newbot`
+3. Введите имя проекта и имя бота
+4. Скопируйте полученный токен
+
+## Установка проекта
+
+1. В `Makefile` введите токены Telegram и OpenAI:
+   ```
+   TELEGRAM_BOT_TOKEN=1235
+   OPENAI_API_KEY=1234
+   ```
+   
+2. Установка зависимостей, генерация файла `.env`:
+   ```
+   make setup
+   ```
+
+## Запуск проекта
+
+1. Запускаем бота локально
+   ```
+   make run
+   ```
+2. Открываем телеграм бота и отправляем сообщение
+   > Сообщения в телеграм боте и в терминале дублируются.
 
 ---
 
-## [установка Docker](https://docs.docker.com/engine/install/debian/)
+# Часть 2: Деплой Docker контейнера
 
-- обновление системы и настройка apt репозитория Docker
+Для деплоя контейнера на облачный сервер потребуется:
+- Скаченная программа [Docker](https://www.docker.com/products/docker-desktop/)
+- Аккаунт в [DockerHub](https://hub.docker.com/)
+- токен телеграмм бота
+- токен API OpenAI
+- операционная система Linux или MacOS
 
-```
-# Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
+1. В `Makefile` добавьте к уже имеющимся токенам, **username**  и **repositoryname**:
+   ```
+   # данные пользователя на Docker Hub
+   USERNAME=UserNameDockerHub
+   REPO=RepositoryNameDockerHub 
+   TAG=v1
+   TELEGRAM_BOT_TOKEN=1235
+   OPENAI_API_KEY=1234
+   ```
+   Для публикации образа в [DockerHub](https://hub.docker.com/) нужно залогиниться через CLI командой `docker login`
 
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-```
+1. Собираем образ под Linux Debian:
+   ```
+   make build
+   ```
 
-- установка Docker
-
-```
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-- тест
-
-```
-sudo docker run hello-world
-```
-
+6. Публикуем образ в DockerHub:
+   ```
+   make push
+   ```
+   
 ---
 
-# Запуск образа 
+## Облачный сервер
 
-- находим образ опубликованный в DockerHub
-
-  ```
-  docker search username/projectname
-  ```
-
-- скачиваем найденный образ
-
-```
-docker pull username/projectname:v1
-```
-
-- запускаем контейнер вместе с ключами от TelegramBot & OpenAI API
-
-```
-sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=YOURTOKEN -e OPENAI_API_KEY=YOURTOKEN username/projectname:v1
-```
-
+1. Воспользуйтесь любым облачным сервисом, например https://timeweb.cloud/
+2. Для доступа к API OpenAI разверните сервер в Нидерландах
+3. Выберите Debian 12 
+4. Когда сервер загрузится и сгенерируется root-пароль, подключитесь к серверу по SSH
+5. 
 ---
 
-# ТЕЛЕГРАМ
+## Установка Docker
 
-- Заходим в телеграм на своего Бота и работаем =)
+1. Обновляем систему и настраиваем репозиторий для Docker:
+   ```
+   sudo apt-get update
+   sudo apt-get install ca-certificates curl
+   sudo install -m 0755 -d /etc/apt/keyrings
+   sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+   sudo chmod a+r /etc/apt/keyrings/docker.asc
+   echo \
+     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   sudo apt-get update  
+   ```
+
+2. [Установика Docker](https://docs.docker.com/engine/install/debian/):
+   ```
+   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   ```
+
+3. Тестируем установку:
+   ```
+   sudo docker run hello-world
+   ```
+
+## Скачивание и запуск образа
+
+1. Находим опубликованный образ в DockerHub:
+   ```
+   docker search username/projectname
+   ```
+
+2. Скачиваем образ:
+   ```
+   docker pull username/projectname:v1
+   ```
+
+3. Запускаем контейнер с токенами Telegram бота и OpenAI API:
+   ```
+   sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=YOURTOKEN -e OPENAI_API_KEY=YOURTOKEN username/projectname:v1
+   ```
+   
+4. Открываем телеграм бота и отправляем сообщение
+   > Сообщения в телеграм боте и в терминале дублируются.
+   
+
+## Телеграм
+
+Зайдите в Telegram к своему боту и начинайте работу!
