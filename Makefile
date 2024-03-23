@@ -31,8 +31,8 @@ run:
 
 # запуск приложения в Docker
 dockerrun:
-    @echo "Docker run"
-    sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=$(TELEGRAM_BOT_TOKEN) -e OPENAI_API_KEY=$(OPENAI_API_KEY) $(IMAGE)
+	@echo "Docker run"
+	sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=$(TELEGRAM_BOT_TOKEN) -e OPENAI_API_KEY=$(OPENAI_API_KEY) $(IMAGE)
 
 # сборка образа
 build:
