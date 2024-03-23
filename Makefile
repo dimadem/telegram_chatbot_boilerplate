@@ -34,6 +34,11 @@ build:
 	@echo "Build image for $(IMAGE)"
 	docker build --platform linux/amd64 -t $(IMAGE) .
 
+# запуск Jupiter Notebook
+notebook:
+	@echo "Run Jupiter Notebook"
+	$(PYTHON_VENV) -m jupyter notebook --no-browser --port=8888 --ip=0.0.0.0 --allow-root
+
 # публикация образа
 push:
 	@echo "Push image to $(IMAGE)"
