@@ -29,10 +29,15 @@ run:
 	@echo "Run app"
 	$(PYTHON_VENV) app.py
 
+# запуск приложения в Docker
+dockerrun:
+    @echo "Docker run"
+    sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=$(TELEGRAM_BOT_TOKEN) -e OPENAI_API_KEY=$(OPENAI_API_KEY) $(IMAGE)
+
 # сборка образа
 build:
 	@echo "Build image for $(IMAGE)"
-	docker build --platform linux/amd64 -t $(IMAGE) .
+	sudo docker build --platform linux/amd64 -t $(IMAGE) .
 
 # запуск Jupiter Notebook
 notebook:
@@ -42,7 +47,7 @@ notebook:
 # публикация образа
 push:
 	@echo "Push image to $(IMAGE)"
-	docker push $(IMAGE)
+	sudo docker push $(IMAGE)
 
 # очистка окружения
 clean:
@@ -51,3 +56,5 @@ clean:
 	find . -type f -name '*.pyc' -delete
 	find . -type d -name '__pycache__' -delete
 	rm -f .env
+
+.PHONY: setup create-env run dockerrun build push clean
