@@ -42,7 +42,7 @@ build:
 # запуск Jupiter Notebook
 notebook:
 	@echo "Run Jupiter Notebook"
-	@source .venv/bin/activate && $(PYTHON_VENV) -m jupyter notebook --no-browser --port=8888 --ip=0.0.0.0 --allow-root
+	@. .venv/bin/activate && $(PYTHON_VENV) -m jupyter notebook --no-browser --port=8888 --ip=0.0.0.0 --allow-root
 
 # публикация образа
 push:
