@@ -42,7 +42,14 @@ telegram_chatbot_boilerplate/
 - `requirements.txt` - зависимости проекта
 
 ---
+# Часть 0: Создание репозитория
 
+- нажми кнопку справа сверху **USE THIS TEMPLATE**
+- назови проект
+- контент в репозитории будет использоваться для хакатона
+
+---
+  
 # Часть 1: Локальная установка
 
 Для локальной установки проекта потребуется:
@@ -97,6 +104,16 @@ telegram_chatbot_boilerplate/
 - Доступ к Серверу (ssh user@ip & password)
 - Jupyter Notebook
 - Visual Studio Code
+
+#### Предустановленный софт на сервере:
+- vim
+- build-essential
+- python3
+- python3-venv
+- docker-ce
+- docker-ce-cli
+- docker-buildx-plugin
+- docker-compose-plugin
 
 # Удаленная разработка
 
