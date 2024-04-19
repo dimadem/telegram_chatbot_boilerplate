@@ -141,6 +141,7 @@ telegram_chatbot_boilerplate/
 
 - Скаченная программа [Docker](https://www.docker.com/products/docker-desktop/)
 - Аккаунт в [DockerHub](https://hub.docker.com/)
+- [Создать репозиторий](https://docs.docker.com/docker-hub/repos/create/)
 - токен Telegram бота
 - токен API OpenAI
 - операционная система Linux или MacOS
