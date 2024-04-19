@@ -156,16 +156,16 @@ telegram_chatbot_boilerplate/
    TELEGRAM_BOT_TOKEN=1235
    OPENAI_API_KEY=1234
    ```
+#### Для публикации образа в [DockerHub](https://hub.docker.com/) нужно залогиниться через CLI командой `docker login`
 
-   > Для публикации образа в [DockerHub](https://hub.docker.com/) нужно залогиниться через CLI командой `docker login`
 
-1. Собираем образ под Linux Debian:
+2. Собираем образ под Linux Debian:
 
    ```
    make build
    ```
 
-1. Публикуем образ в DockerHub:
+3. Публикуем образ в DockerHub:
    ```
    make push
    ```
