@@ -69,13 +69,16 @@ telegram_chatbot_boilerplate/
 4. Скопируйте полученный токен
 
 ## Установка проекта
-
-1. В `Makefile` введите токены Telegram и OpenAI:
+0. Склонировать репозиторий
+   ```
+   git clone github.com/yourreponame
+   ```
+2. В `Makefile` введите токены Telegram и OpenAI:
    ```
    TELEGRAM_BOT_TOKEN=1235
    OPENAI_API_KEY=1234
    ```
-2. Установка зависимостей, генерация файла `.env`:
+3. Установка зависимостей, генерация файла `.env`:
    ```
    make setup
    ```
