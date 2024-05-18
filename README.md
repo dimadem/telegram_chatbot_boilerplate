@@ -119,6 +119,10 @@ telegram_chatbot_boilerplate/
 - docker-compose-plugin
 
 # Удаленная разработка
+0. Заходим на сервер
+  ```
+  ssh -i PATH_TO_YOUR_KEY.pem admin@SERVER_IP_ADDRESS
+  ```
 
 1. Клонируем (по https) свой репозиторий в отдельную папку на сервер
    ```
@@ -144,14 +148,22 @@ telegram_chatbot_boilerplate/
    ```
 7. На своем **персональном устройстве** создаем туннель:
    ```
-   ssh -NL 8888:localhost:8888 root@serverIpAddress
+   ssh -NL 8888:localhost:8888 root@SERVER_IP_ADDRESS
    ```
-8. Открываем в браузере;
+
+   или (в зависимости от того, как вы залогинены на сервере)
+
+   ```
+   ssh -NL 8888:localhost:8888 admin@SERVER_IP_ADDRESS
+   ```
+  также если вы залогинены на сервере с использованием ключа (-i PATH_TO_YOUR_KEY.pem), его нужно указать при создании тунеля
+   
+9. Открываем в браузере;
    ```
    http://localhost:8888
    ```
-9. Вставляем токен, который скопировали на шаге **5**, в поле "Password or token" и нажимаем Login.
-10. Пользуемся
+10. Вставляем токен, который скопировали на шаге **5**, в поле "Password or token" и нажимаем Login.
+11. Пользуемся
 
 ---
 
