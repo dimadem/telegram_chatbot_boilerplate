@@ -11,11 +11,6 @@ async def image_file_reply(update, context):
     caption = update.message.caption
     print("caption -> ", caption)
 
-    # Кодирование изображения в base64
-    base64_image = await image_to_base64(image_file)
-    image_url = image_file.file_path
-    print("image_url -> ", image_url)
-
     # обработка изображения
     description = client.chat.completions.create(
         model="gpt-4o",
@@ -30,7 +25,7 @@ async def image_file_reply(update, context):
                     {
                         "type": "image_url",
                         "image_url":{
-                            "url": image_url,
+                            "url": image_file.file_path,
                         },
                     },
                 ],

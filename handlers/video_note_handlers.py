@@ -1,5 +1,5 @@
 from telegram import Update
-from config.openai_client import client
+from config.openai_client import client, generate_transcription
 from io import BytesIO
 from utils.helpers import frames_to_base64
 
@@ -11,20 +11,15 @@ async def video_note_reply(update, context):
     # конвертация видео в формат .ogg
     audio_bytes = BytesIO(await video_file.download_as_bytearray())
     
-    # запрос транскрипции аудио
-    transcription = client.audio.transcriptions.create( model="whisper-1", 
-        file=("audio.oga", audio_bytes, "audio/ogg")
-    )
-
     # получение кадров видео
     video_frames = frames_to_base64(video_file)
-    print("length of video_frames -> ", len(video_frames))  
+    print("length of video_frames -> ", len(video_frames))
 
-    # текст транскрипции
-    text = transcription.text.strip() if transcription.text else ""
-    print("text -> ", text)
+    # запрос транскрипции аудио
+    transcription = generate_transcription(audio_bytes) if audio_bytes else "No transcription"
+    print("transcription -> ", transcription)
 
-    # обработка видео
+    # обработка видео openai
     result = client.chat.completions.create(
         model="gpt-4o",
         messages=[
@@ -33,7 +28,7 @@ async def video_note_reply(update, context):
                 "content": [
                     {
                         "type": "text", 
-                        "text": text,
+                        "text": transcription,
                     },
                     *map(lambda x: {"image": x, "resize": 768}, video_frames[0::300]),
                 ],

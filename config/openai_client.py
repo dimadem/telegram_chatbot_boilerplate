@@ -14,3 +14,10 @@ def generate_response(text):
     )
     print(response.choices[0].message.content.strip())
     return response.choices[0].message.content.strip()
+
+def generate_transcription(audio_bytes):
+    transcription = client.audio.transcriptions.create(
+        model="whisper-1", 
+        file=("audio.oga", audio_bytes, "audio/ogg")
+    )
+    return transcription.text.strip()
