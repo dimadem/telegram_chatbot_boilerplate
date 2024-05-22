@@ -1,35 +1,24 @@
-import base64
-import cv2
 from telegram import Update
 from config.openai_client import client
 from io import BytesIO
+from utils.helpers import frames_to_base64, convert_to_ogg
 
-def frame_to_base64(video_file):
-    video = cv2.VideoCapture(video_file.file_path)
-    base64Frames = []
-    while video.isOpened():
-        success, frame = video.read()
-        if not success:
-            break
-        _, buffer = cv2.imencode(".jpg", frame)
-        base64Frames.append(base64.b64encode(buffer).decode("utf-8"))
-    video.release()
-    cv2.destroyAllWindows()
-    return base64Frames
-
-async def video_reply(update, context):
+async def video_file_reply(update, context):
     # получение объекта video_file
     video_file = await context.bot.get_file(update.message.video.file_id)
     print("video_file -> ", video_file)
 
+    # конвертация видео в формат .ogg
     audio_bytes = BytesIO(await video_file.download_as_bytearray())
+    
     # запрос транскрипции аудио
-    transcription = client.audio.transcriptions.create( model="whisper-1", 
+    transcription = client.audio.transcriptions.create(
+        model="whisper-1", 
         file=("audio.oga", audio_bytes, "audio/ogg")
     )
 
     # получение кадров видео
-    video_frames = frame_to_base64(video_file)
+    video_frames = frames_to_base64(video_file)
     print("length of video_frames -> ", len(video_frames))  
 
     # текст транскрипции
