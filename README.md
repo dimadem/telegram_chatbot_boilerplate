@@ -198,11 +198,13 @@ telegram_chatbot_boilerplate/
    ```
 
 3. Запускаем контейнер с приложением
-   ```
+
+  ```
    make dockerrun
   ```
 
 4. Также, можно опубликовать образ в DockerHub:
+
    ```
    make push
    ```
@@ -224,8 +226,10 @@ telegram_chatbot_boilerplate/
    ```
 
 3. Запускаем контейнер с токенами Telegram бота и OpenAI API:
+
    ```
    sudo docker run -i -t -e TELEGRAM_BOT_TOKEN=YOURTOKEN -e OPENAI_API_KEY=YOURTOKEN username/projectname:v1
    ```
+
 4. Открываем Telegram бота и отправляем сообщение
    > Сообщения в Telegram боте и в терминале дублируются.
