@@ -42,6 +42,6 @@ if __name__ == '__main__':
             listen="0.0.0.0",
             port=port,
             url_path=os.environ.get('TELEGRAM_BOT_TOKEN'),
-            webhook_url=f"https://{os.environ.get('HEROKU_APP_NAME')}.herokuapp.com/{TELEGRAM_BOT_TOKEN}"
+            webhook_url=f"https://{os.environ.get('HEROKU_APP_NAME')}.herokuapp.com/{os.environ.get('TELEGRAM_BOT_TOKEN')}"
             )
 
