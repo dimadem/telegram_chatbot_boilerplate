@@ -5,3 +5,4 @@ load_dotenv()
 
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+HEROKU_APP_NAME = os.environ.get('HEROKU_APP_NAME')
