@@ -34,7 +34,10 @@ video_handler = MessageHandler(filters.VIDEO, video_file_reply)
 application.add_handler(video_handler)
 
 # Запуск бота
-application.run_polling()
+try:
+    application.run_polling()
+except Exception as e:
+    logging.error(f"Произошла ошибка: {e}")
 # if __name__ == '__main__':
 #     port = int(os.environ.get('PORT', 5000))
     
