@@ -9,15 +9,6 @@ from handlers.video_note_handlers import video_note_reply
 from handlers.image_file_handlers import image_file_reply
 from handlers.video_file_handlers import video_file_reply
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    application.run_webhook(
-            listen="0.0.0.0",
-            port=port,
-            url_path=TELEGRAM_BOT_TOKEN,
-            webhook_url=f"https://{os.environ.get('HEROKU_APP_NAME')}.herokuapp.com/{TELEGRAM_BOT_TOKEN}"
-            )
-
 # Регистрация обработчиков команд
 start_handler = CommandHandler("start", start_reply)
 application.add_handler(start_handler)
@@ -43,4 +34,14 @@ video_handler = MessageHandler(filters.VIDEO, video_file_reply)
 application.add_handler(video_handler)
 
 # Запуск бота
-application.run_polling()
+#application.run_polling()
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    
+    application.run_webhook(
+            listen="0.0.0.0",
+            port=port,
+            url_path=TELEGRAM_BOT_TOKEN,
+            webhook_url=f"https://{os.environ.get('HEROKU_APP_NAME')}.herokuapp.com/{TELEGRAM_BOT_TOKEN}"
+            )
+
