@@ -34,14 +34,14 @@ video_handler = MessageHandler(filters.VIDEO, video_file_reply)
 application.add_handler(video_handler)
 
 # Запуск бота
-#application.run_polling()
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+application.run_polling()
+# if __name__ == '__main__':
+#     port = int(os.environ.get('PORT', 5000))
     
-    application.run_webhook(
-            listen="0.0.0.0",
-            port=port,
-            url_path=os.environ.get('TELEGRAM_BOT_TOKEN'),
-            webhook_url=f"https://{os.environ.get('HEROKU_APP_NAME')}.herokuapp.com/{os.environ.get('TELEGRAM_BOT_TOKEN')}"
-            )
+#     application.run_webhook(
+#             listen="0.0.0.0",
+#             port=port,
+#             url_path=os.environ.get('TELEGRAM_BOT_TOKEN'),
+#             webhook_url=f"https://{os.environ.get('HEROKU_APP_NAME')}.herokuapp.com/{os.environ.get('TELEGRAM_BOT_TOKEN')}"
+#             )
 
